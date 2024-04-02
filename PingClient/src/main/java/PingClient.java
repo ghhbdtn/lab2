@@ -1,5 +1,4 @@
 import java.net.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -26,7 +25,7 @@ class PingClient {
         Integer pLost = 0;
 
         if (argv.length < 2) {
-            System.out.println("Usage: java Server.PingServer hostname port\n");
+            System.out.println("Usage: java PingServer hostname port\n");
             System.exit(-1);
         }
 
@@ -42,7 +41,7 @@ class PingClient {
 
             Long RTTb = System.currentTimeMillis();
 
-            sendData = ("PING №"+sequence).getBytes();
+            sendData = ("PING "+sequence).getBytes();
 
             try {
 
@@ -52,8 +51,7 @@ class PingClient {
 
                 receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 clientSocket.receive(receivePacket);
-                String serverSentence = new String(receivePacket.getData(), 0, receivePacket.getLength(),
-                        StandardCharsets.UTF_8);
+                String serverSentence = new String(receivePacket.getData(), 0, receivePacket.getLength());
 
                 Long RTTa = System.currentTimeMillis();
 
