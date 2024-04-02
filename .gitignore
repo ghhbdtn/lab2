@@ -1,0 +1,5 @@
+# Project exclude paths
+/HeartbeatClient/target/
+/HeartbeatServer/target/
+/PingClient/target/
+/PingServer/target/
